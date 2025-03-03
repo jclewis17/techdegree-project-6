@@ -13,4 +13,14 @@ const phrases = [
     "PRACTICE MAKES PERFECT"
 ];
 
-console.log(phrases);
+mainButton.addEventListener('click', () => {
+    let hideOverlay = document.querySelector('#overlay');
+    hideOverlay.style.display = 'none';
+});
+
+function getRandomPhraseAsArray(arr) { //To pick a random phrase for the player to guess
+    let randomNumber = Math.floor(Math.random() * arr.length);
+    return randomNumber;
+}
+
+console.log(getRandomPhraseAsArray(phrases));
