@@ -23,4 +23,23 @@ function getRandomPhraseAsArray(arr) { //To pick a random phrase for the player 
     return randomNumber;
 }
 
-console.log(getRandomPhraseAsArray(phrases));
+function addPhraseToDisplay(arr) { //To loop through an array of chracters and add to display
+    let phraseUl = document.querySelector('#phrase ul');
+
+    for (let i = 0; i < arr.length; i++) {
+        let character = arr[i];
+        
+        let li = document.createElement('li');
+        li.textContent = character;
+
+        if (character !== " ") {
+            li.classList.add('letter');
+        } else {
+            li.classList.add('space');
+        }
+
+        phraseUl.appendChild(li);
+    }
+}
+
+addPhraseToDisplay(["H", "E", "L", "L", "O", " ", "W", "O", "R", "L", "D"]);
