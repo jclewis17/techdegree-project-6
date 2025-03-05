@@ -16,6 +16,9 @@ const phrases = [
 mainButton.addEventListener('click', () => {
     let hideOverlay = document.querySelector('#overlay');
     hideOverlay.style.display = 'none';
+
+    let selectedPhrase = getRandomPhraseAsArray(phrases);
+    addPhraseToDisplay(selectedPhrase);
 });
 
 function getRandomPhraseAsArray(arr) { 
@@ -44,5 +47,4 @@ function addPhraseToDisplay(arr) { //To loop through an array of chracters and a
     }
 }
 
-let selectedPhrase = getRandomPhraseAsArray(phrases);
-addPhraseToDisplay(selectedPhrase);
+
