@@ -13,7 +13,7 @@ const phrases = [
     "PRACTICE MAKES PERFECT"
 ];
 
-// EVENT LISTENER FOR START BUTTON
+
 mainButton.addEventListener('click', () => {
     let hideOverlay = document.querySelector('#overlay');
     hideOverlay.style.display = 'none';
@@ -22,14 +22,14 @@ mainButton.addEventListener('click', () => {
     addPhraseToDisplay(selectedPhrase);
 });
 
-// FUNCTION: GET RANDOM PHRASE AS ARRAY
+
 function getRandomPhraseAsArray(arr) { 
     let randomNumber = Math.floor(Math.random() * arr.length); 
     let randomPhrase = arr[randomNumber];
     return randomPhrase.split(""); 
 }
 
-// FUNCTION: ADD PHRASE TO DISPLAY
+
 function addPhraseToDisplay(arr) { // Loops through characters and adds to display
     let phraseUl = document.querySelector('#phrase ul');
 
@@ -49,12 +49,11 @@ function addPhraseToDisplay(arr) { // Loops through characters and adds to displ
     }
 }
 
-// FUNCTION: CHECK LETTER IN PHRASE
 function checkLetter(letter) { // Checks each letter in the phrase
     let liElements = document.querySelectorAll('#phrase ul li');
     let match = null;
 
-    for (let i = 0; i < liElements.length; i++) {
+    for (let i = 0; i < liElements.length; i++) { //Check each letter of chosen phrase
         let currentLetter = liElements[i];
 
         if (currentLetter.textContent.toUpperCase() === letter.toUpperCase()) {
@@ -65,12 +64,12 @@ function checkLetter(letter) { // Checks each letter in the phrase
     return match; // Returns results of the loop
 }
 
-// EVENT LISTENER: ON-SCREEN KEYBOARD
-qwerty.addEventListener('click', (event) => {
-    let chosenLetter = event.target; // Get the element that was clicked
 
-    // Check if the clicked element is a button and doesn't already have the "chosen" class
+qwerty.addEventListener('click', (event) => {
+    let chosenLetter = event.target;
+
     if (chosenLetter.tagName === "BUTTON" && !chosenLetter.classList.contains("chosen")) {
+        chosenLetter.classList.add("chosen"); // Add "chosen" class to the clicked button
         console.log("Valid button clicked:", chosenLetter.textContent);
     }
 });
