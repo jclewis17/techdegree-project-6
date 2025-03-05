@@ -47,4 +47,16 @@ function addPhraseToDisplay(arr) { //To loop through an array of chracters and a
     }
 }
 
+function checkLetter(letter) { //To check each letter in the phrase
+    let liElements = document.querySelectorAll('#phrase ul li');
+    let match = null;
 
+    for(let i = 0; i < liElements.length; i++) {
+        let currentLetter = liElements[i];
+
+        if (currentLetter.textContent.toUpperCase() === letter.toUpperCase()) {
+            currentLetter.classList.add('show');
+            match = letter;
+        }
+    } return match;
+}
