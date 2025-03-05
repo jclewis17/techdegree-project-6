@@ -4,6 +4,9 @@ phrase = document.querySelector('#phrase');
 mainButton = document.querySelector('.btn__reset');
 wrongGuessCounter = 0;
 
+letterClassLi = document.querySelectorAll('.letter li');
+letterClassShow = document.querySelectorAll('.show li');
+
 // PHRASES ARRAY
 const phrases = [
     "BREAK A LEG",
@@ -53,7 +56,7 @@ function checkLetter(letter) { // Checks each letter in the phrase
     let liElements = document.querySelectorAll('#phrase ul li');
     let match = null;
 
-    for (let i = 0; i < liElements.length; i++) { //Check each letter of chosen phrase
+    for (let i = 0; i < liElements.length; i++) { //Check each letter of chosen phrase by looping through each li element
         let currentLetter = liElements[i];
 
         if (currentLetter.textContent.toUpperCase() === letter.toUpperCase()) {
@@ -70,6 +73,15 @@ qwerty.addEventListener('click', (event) => {
 
     if (chosenLetter.tagName === "BUTTON" && !chosenLetter.classList.contains("chosen")) {
         chosenLetter.classList.add("chosen"); // Add "chosen" class to the clicked button
-        console.log("Valid button clicked:", chosenLetter.textContent);
+    }
+
+    let letterFound = checkLetter(chosenLetter.textContent)
+    
+    if (letterFound === null) {
+        wrongGuessCounter++;
+        let lives = document.querySelectorAll('.tries img')
+        if (lives.length > 0) {
+            lives[wrongGuessCounter - 1].src = "images/lostHeart.png";
+        }
     }
 });
