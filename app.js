@@ -18,10 +18,12 @@ mainButton.addEventListener('click', () => {
     hideOverlay.style.display = 'none';
 });
 
-function getRandomPhraseAsArray(arr) { //To pick a random phrase for the player to guess
-    let randomNumber = Math.floor(Math.random() * arr.length);
-    return randomNumber;
+function getRandomPhraseAsArray(arr) { 
+    let randomNumber = Math.floor(Math.random() * arr.length); 
+    let randomPhrase = arr[randomNumber];
+    return randomPhrase.split(""); 
 }
+
 
 function addPhraseToDisplay(arr) { //To loop through an array of chracters and add to display
     let phraseUl = document.querySelector('#phrase ul');
@@ -42,4 +44,5 @@ function addPhraseToDisplay(arr) { //To loop through an array of chracters and a
     }
 }
 
-addPhraseToDisplay(["H", "E", "L", "L", "O", " ", "W", "O", "R", "L", "D"]);
+let selectedPhrase = getRandomPhraseAsArray(phrases);
+addPhraseToDisplay(selectedPhrase);
