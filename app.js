@@ -4,7 +4,7 @@ phrase = document.querySelector('#phrase');
 mainButton = document.querySelector('.btn__reset');
 wrongGuessCounter = 0;
 
-//PHRASES ARRAY
+// PHRASES ARRAY
 const phrases = [
     "BREAK A LEG",
     "PIECE OF CAKE",
@@ -13,6 +13,7 @@ const phrases = [
     "PRACTICE MAKES PERFECT"
 ];
 
+// EVENT LISTENER FOR START BUTTON
 mainButton.addEventListener('click', () => {
     let hideOverlay = document.querySelector('#overlay');
     hideOverlay.style.display = 'none';
@@ -21,19 +22,20 @@ mainButton.addEventListener('click', () => {
     addPhraseToDisplay(selectedPhrase);
 });
 
+// FUNCTION: GET RANDOM PHRASE AS ARRAY
 function getRandomPhraseAsArray(arr) { 
     let randomNumber = Math.floor(Math.random() * arr.length); 
     let randomPhrase = arr[randomNumber];
     return randomPhrase.split(""); 
 }
 
-
-function addPhraseToDisplay(arr) { //To loop through an array of chracters and add to display
+// FUNCTION: ADD PHRASE TO DISPLAY
+function addPhraseToDisplay(arr) { // Loops through characters and adds to display
     let phraseUl = document.querySelector('#phrase ul');
 
     for (let i = 0; i < arr.length; i++) {
         let character = arr[i];
-        
+
         let li = document.createElement('li');
         li.textContent = character;
 
@@ -47,16 +49,28 @@ function addPhraseToDisplay(arr) { //To loop through an array of chracters and a
     }
 }
 
-function checkLetter(letter) { //To check each letter in the phrase
+// FUNCTION: CHECK LETTER IN PHRASE
+function checkLetter(letter) { // Checks each letter in the phrase
     let liElements = document.querySelectorAll('#phrase ul li');
     let match = null;
 
-    for(let i = 0; i < liElements.length; i++) {
+    for (let i = 0; i < liElements.length; i++) {
         let currentLetter = liElements[i];
 
         if (currentLetter.textContent.toUpperCase() === letter.toUpperCase()) {
             currentLetter.classList.add('show');
             match = letter;
         }
-    } return match;
+    }
+    return match; // Returns results of the loop
 }
+
+// EVENT LISTENER: ON-SCREEN KEYBOARD
+qwerty.addEventListener('click', (event) => {
+    let chosenLetter = event.target; // Get the element that was clicked
+
+    // Check if the clicked element is a button and doesn't already have the "chosen" class
+    if (chosenLetter.tagName === "BUTTON" && !chosenLetter.classList.contains("chosen")) {
+        console.log("Valid button clicked:", chosenLetter.textContent);
+    }
+});
