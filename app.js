@@ -82,11 +82,16 @@ qwerty.addEventListener('click', (event) => {
         }
     }
 
-    letterClassLi = document.querySelectorAll('.letter');
-    letterClassShow = document.querySelectorAll('.show');
+    let letterClassLi = document.querySelectorAll('.letter');
+    let letterClassShow = document.querySelectorAll('.show');
 
     if (letterClassLi.length === letterClassShow.length) { //Take the two variables letterClassLi and letterClassShow and compares their length to determine a win condition
-        console.log("Player has won");
+        let showOverlay = document.querySelector('#overlay');
+        showOverlay.classList.add('win');
+        showOverlay.style.display = 'flex';
+
+        let winHeading = document.querySelector('#overlay h2');
+        winHeading.textContent = "YOU WON!"
     }
     
 });
