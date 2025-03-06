@@ -85,7 +85,7 @@ qwerty.addEventListener('click', (event) => {
     letterClassLi = document.querySelectorAll('.letter');
     letterClassShow = document.querySelectorAll('.show');
 
-    if (letterClassLi.length === letterClassShow.length) {
+    if (letterClassLi.length === letterClassShow.length) { //Take the two variables letterClassLi and letterClassShow and compares their length to determine a win condition
         console.log("Player has won");
     }
     
