@@ -108,7 +108,7 @@ qwerty.addEventListener('click', (event) => {
 
         let endLi = document.querySelectorAll('#phrase ul li');
         endLi.forEach(li => { //Hide all lie elements in phrase
-        li.style.opacity = "0"; 
+        li.style.display = "none"; 
     });
 
         let winHeading = document.querySelector('#overlay h2');
@@ -122,6 +122,11 @@ qwerty.addEventListener('click', (event) => {
         let showOverlay = document.querySelector('#overlay');
         showOverlay.classList.add('lose');
         showOverlay.style.display = 'flex';
+
+        let endLi = document.querySelectorAll('#phrase ul li');
+        endLi.forEach(li => { //Hide all lie elements in phrase
+        li.style.display = "none"; 
+    });
         
         let loseHeading = document.querySelector('#overlay h2');
         loseHeading.textContent = "SORRY, YOU LOSE"
