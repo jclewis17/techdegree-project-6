@@ -4,9 +4,6 @@ phrase = document.querySelector('#phrase');
 mainButton = document.querySelector('.btn__reset');
 wrongGuessCounter = 0;
 
-letterClassLi = document.querySelectorAll('.letter li');
-letterClassShow = document.querySelectorAll('.show li');
-
 // PHRASES ARRAY
 const phrases = [
     "BREAK A LEG",
@@ -81,7 +78,16 @@ qwerty.addEventListener('click', (event) => {
         wrongGuessCounter++;
         let lives = document.querySelectorAll('.tries img')
         if (lives.length > 0) {
-            lives[wrongGuessCounter - 1].src = "images/lostHeart.png";
+            lives[wrongGuessCounter - 1].src = "images/lostHeart.png"; //After checking for wrong guess (letterFound = null), replaces heart image starting with index 0
         }
     }
+
+    letterClassLi = document.querySelectorAll('.letter');
+    letterClassShow = document.querySelectorAll('.show');
+
+    if (letterClassLi.length === letterClassShow.length) {
+        console.log("Player has won");
+    }
+    
 });
+
