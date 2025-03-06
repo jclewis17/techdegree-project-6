@@ -93,6 +93,15 @@ qwerty.addEventListener('click', (event) => {
         let winHeading = document.querySelector('#overlay h2');
         winHeading.textContent = "YOU WON!"
     }
+
+    if (wrongGuessCounter > 4) {
+        let showOverlay = document.querySelector('#overlay');
+        showOverlay.classList.add('lose');
+        showOverlay.style.display = 'flex';
+        
+        let loseHeading = document.querySelector('#overlay h2');
+        loseHeading.textContent = "SORRY, YOU LOSE" 
+    }
     
 });
 
