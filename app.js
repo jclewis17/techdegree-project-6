@@ -14,13 +14,29 @@ const phrases = [
 ];
 
 
-mainButton.addEventListener('click', () => {
+mainButton.addEventListener('click', () => { // Code contains resets so whether Start Game, Play Again or Try Again is clicked, game is always reset to default for new game
     let hideOverlay = document.querySelector('#overlay');
     hideOverlay.style.display = 'none';
 
-    let selectedPhrase = getRandomPhraseAsArray(phrases);
-    addPhraseToDisplay(selectedPhrase);
+    wrongGuessCounter = 0; //Reset guess counter
+
+
+    let phraseUl = document.querySelector('#phrase ul'); //Remove current phrase
+    phraseUl.innerHTML = "";
+
+    let keyboardButtons = document.querySelectorAll('#qwerty button');
+    keyboardButtons.forEach(button => { //Resets all the letters on the keyboard
+        button.classList.remove('chosen'); 
+        button.disabled = false;
+    });
+
+    let lives = document.querySelectorAll('.tries img');
+    lives.forEach(heart => heart.src = "images/liveHeart.png"); // Resets all hearts
+
+    let selectedPhrase = getRandomPhraseAsArray(phrases); // Picks a new phrase
+    addPhraseToDisplay(selectedPhrase); 
 });
+
 
 
 function getRandomPhraseAsArray(arr) { 
@@ -103,7 +119,10 @@ qwerty.addEventListener('click', (event) => {
         showOverlay.style.display = 'flex';
         
         let loseHeading = document.querySelector('#overlay h2');
-        loseHeading.textContent = "SORRY, YOU LOSE" 
+        loseHeading.textContent = "SORRY, YOU LOSE"
+        
+        let endButton = document.querySelector('#overlay a');
+        endButton.textContent = "Try Again";
     }
     
 });
