@@ -106,6 +106,11 @@ qwerty.addEventListener('click', (event) => {
         showOverlay.classList.add('win');
         showOverlay.style.display = 'flex';
 
+        let endLi = document.querySelectorAll('#phrase ul li');
+        endLi.forEach(li => { //Hide all lie elements in phrase
+        li.style.opacity = "0"; 
+    });
+
         let winHeading = document.querySelector('#overlay h2');
         winHeading.textContent = "YOU WON!"
 
