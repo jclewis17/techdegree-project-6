@@ -92,6 +92,9 @@ qwerty.addEventListener('click', (event) => {
 
         let winHeading = document.querySelector('#overlay h2');
         winHeading.textContent = "YOU WON!"
+
+        let endButton = document.querySelector('#overlay a');
+        endButton.textContent = "Play Again";
     }
 
     if (wrongGuessCounter > 4) {
@@ -104,4 +107,3 @@ qwerty.addEventListener('click', (event) => {
     }
     
 });
-
