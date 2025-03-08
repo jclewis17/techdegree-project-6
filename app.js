@@ -20,6 +20,8 @@ mainButton.addEventListener('click', () => { // Code contains resets so whether 
 
     wrongGuessCounter = 0; //Reset guess counter
 
+    let showOverlay = document.querySelector('#overlay');
+    showOverlay.classList.remove('lose', 'win');
 
     let phraseUl = document.querySelector('#phrase ul'); //Remove current phrase
     phraseUl.innerHTML = "";
@@ -84,7 +86,11 @@ function checkLetter(letter) { // Checks each letter in the phrase
 qwerty.addEventListener('click', (event) => {
     let chosenLetter = event.target;
 
-    if (chosenLetter.tagName === "BUTTON" && !chosenLetter.classList.contains("chosen")) {
+    if (chosenLetter.tagName !== "BUTTON") {
+        return; // When clicking the white space, this code immediatley exits the function
+    }
+
+    if (!chosenLetter.classList.contains("chosen")) {
         chosenLetter.classList.add("chosen"); // Add "chosen" class to the clicked button
         chosenLetter.disabled = true;
     }
