@@ -86,6 +86,7 @@ qwerty.addEventListener('click', (event) => {
 
     if (chosenLetter.tagName === "BUTTON" && !chosenLetter.classList.contains("chosen")) {
         chosenLetter.classList.add("chosen"); // Add "chosen" class to the clicked button
+        chosenLetter.disabled = true;
     }
 
     let letterFound = checkLetter(chosenLetter.textContent)
